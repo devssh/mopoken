@@ -1,7 +1,8 @@
 import unittest
 import sys
 
-sys.path.insert(0, '../python-server')
+# sys.path.insert(0, '../python-server')
+sys.path.insert(0, 'python-server')
 from parser import Parser
 from pokemon import Pokemon, advantage_types
 from poketype import poketypes
