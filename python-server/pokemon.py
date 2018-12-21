@@ -7,17 +7,27 @@ class Pokemon:
 
     def __init__(self, type, level):
         if type not in list(poketypes.keys()):
-            raise ValueError("Unknown type of pokemon " + str(type))
+            raise ValueError("Unknown type of pokemon: " + str(type))
+        try:
+            if not isinstance(int(level), int):
+                raise ValueError("Level of pokemon is not a number: " + str(level))
+        except:
+            raise ValueError("Level of pokemon is not a number: " + str(level))
         self.type = type
         self.level = level
 
     def __str__(self):
-        return self.type + " " + str(self.level)
+        return self.type + "#" + str(self.level)
+
+    def __repr__(self):
+        return self.type + "#" + str(self.level)
 
     def __gt__(self, other):
         if self.level > other.level * 2:
             return True
         if (self.level * 2 > other.level) and (other.type in poketypes[self.type].weaker_types):
+            return True
+        if (self.level > other.level) and (self.type not in poketypes[other.type].weaker_types):
             return True
         return False
 

@@ -22,6 +22,5 @@ type_advantages = {
 
 poketypes = {poketype: Poketype(poketype, weaker_types) for poketype, weaker_types in type_advantages.items()}
 
-
 if __name__ == "__main__":
     print(poketypes)
