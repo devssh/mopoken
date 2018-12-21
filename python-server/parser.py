@@ -12,7 +12,7 @@ class Parser:
         try:
             pokemon_list = [Pokemon(*pokemon.split("#")) for pokemon in input_text.split(";")]
             self.pokemon_list = pokemon_list
-        except:
+        except Exception:
             raise ValueError("Error in input string")
 
 

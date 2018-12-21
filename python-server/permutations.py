@@ -23,4 +23,10 @@ def permutations(iterable, r=None):
 
 
 if __name__ == '__main__':
+    import time
     print(list(permutations([1, 2, 3], 3)))
+    start = time.time()
+    list(permutations(list(range(7)), 5))
+    end = time.time()
+    print((end - start) * 1000, "milliseconds")
+
