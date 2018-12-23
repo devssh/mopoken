@@ -1,6 +1,7 @@
 from flask import Flask, request
 from game import Game
 from pages import index
+import sys
 
 host = "0.0.0.0"
 port = 5001
@@ -16,7 +17,11 @@ def show_page():
 @app.route("/run", methods=["POST"])
 def run_game():
     data = request.form
-    return Game().start(data["input1"], data["input2"])
+    try:
+        return Game().start(data["input1"], data["input2"]);
+    except ValueError as e:
+        print(e, dir(e), file=sys.stderr)
+        return str(e)
 
 
 if __name__ == '__main__':

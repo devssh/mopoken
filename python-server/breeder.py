@@ -36,8 +36,8 @@ class Breeder:
             return [duel[0] for duel in wins[0]] if len(wins) > 0 else breeder1.pokemon_list
 
         def select_pokemon_order(breeder1, breeder2):
-            if self.type == breeder_types[0]:
-                return self.pokemon_list
+            if breeder1.type == breeder_types[0]:
+                return breeder1.pokemon_list
             else:
                 return advantageous_fight_order(breeder1, breeder2)
 

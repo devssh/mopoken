@@ -113,6 +113,16 @@ class TestMethods(unittest.TestCase):
         wins = len([result for result in battle_results if advantage_types[1] == result])
         self.assertTrue(wins >= 3)
 
+    def test_integration_breeder_type_npc_does_not_act_like_player(self):
+        input1 = "Fire#10;Water#20;Fighting#7;Psychic#10;Ghost#12"
+        input2 = "Grass#11;Water#20;Fighting#13;Psychic#10;Electric#12"
+        player1 = Breeder(breeder_types[1], Parser(input1).pokemon_list)
+        npc_player2 = Breeder(breeder_types[0], Parser(input2).pokemon_list)
+        battle_order = player1.fight(npc_player2)
+        battle_results = [pokemon1.check_odds(pokemon2) for (pokemon1, pokemon2) in battle_order]
+        wins = len([result for result in battle_results if advantage_types[1] == result])
+        self.assertTrue(wins >= 3)
+
     def test_integration_breeder_type_player_loses_if_not_possible_to_win(self):
         input1 = "Fire#10;Water#20;Fighting#6;Psychic#10;Electric#12"
         input2 = "Water#100;Fighting#100;Psychic#100;Fire#120;Grass#20"
